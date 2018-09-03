@@ -11,7 +11,7 @@ export default class login_page extends PureComponent {
         return (
             <div>
                 <Button>ahhsah</Button>
-                <Button type="primary"> primary </Button>
+                <Button type="primary"> 登录页面 </Button>
             </div>
         );
     }

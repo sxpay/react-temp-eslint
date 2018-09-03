@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
+// import { Button } from 'antd-mobile';
 
-export default class home_page extends PureComponent {
+export default class order_page extends PureComponent {
     constructor(props) {
         super(props);
         this.state = {};
@@ -9,7 +10,7 @@ export default class home_page extends PureComponent {
     render() {
         return (
             <div style={{'height':'1000px'}}>
-                首页
+                账单
             </div>
         );
     }

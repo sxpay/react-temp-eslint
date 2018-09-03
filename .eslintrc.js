@@ -20,7 +20,10 @@ module.exports = {
 	rules: {
 		'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
 		'react/prop-types': 0,
+		'import/prefer-default-export': 0,
+		'react/jsx-indent-props': 0,
 		parser: 'babel-eslint',
+		'react/forbid-prop-types': 0,
 		'no-alert': 0, //禁止使用alert confirm prompt
 		'no-array-constructor': 2, //禁止使用数组构造器
 		'no-bitwise': 0, //禁止使用按位运算符
@@ -28,7 +31,7 @@ module.exports = {
 		'no-catch-shadow': 2, //禁止catch子句参数与外部作用域变量同名
 		'no-class-assign': 2, //禁止给类赋值
 		'no-cond-assign': 2, //禁止在条件表达式中使用赋值语句
-		'no-console': 2, //禁止使用console
+		'no-console': 0, //禁止使用console
 		'no-const-assign': 2, //禁止修改const声明的变量
 		'no-constant-condition': 2, //禁止在条件中使用常量表达式 if(true) if(1)
 		'no-continue': 0, //禁止使用continue
@@ -86,7 +89,7 @@ module.exports = {
 		'no-obj-calls': 2, //不能调用内置的全局对象，比如Math() JSON()
 		'no-octal': 2, //禁止使用八进制数字
 		'no-octal-escape': 2, //禁止使用八进制转义序列
-		'no-param-reassign': 2, //禁止给参数重新赋值
+		'no-param-reassign': 0, //禁止给参数重新赋值
 		'no-path-concat': 0, //node中不能使用__dirname或__filename做路径拼接
 		'no-plusplus': 0, //禁止使用++，--
 		'no-process-env': 0, //禁止使用process.env

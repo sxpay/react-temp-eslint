@@ -139,6 +139,7 @@ module.exports = function(options) {
                 'pages': path.resolve(__dirname, '../src/pages'),
                 'components': path.resolve(__dirname, '../src/components'),
                 'utils': path.resolve(__dirname, '../src/utils'),
+                'config': path.resolve(__dirname, '../src/config'),
                 'routers': path.resolve(__dirname, '../src/routers'),
                 'assets': path.resolve(__dirname, '../src/assets'),
                 'example': path.resolve(__dirname, '../src/example')
