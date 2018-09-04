@@ -10,7 +10,16 @@ export default class demo_page extends PureComponent {
     componentWillMount() {
         const { setTitle } = this.props;
 
-        setTitle('改变标题');
+        setTitle('我是被改变的标题');
+    }
+
+    fetchTest=()=>{
+        this.props.$fetch.get('/login').then(res=>{
+            if (res.msgCode==='PTM0000'){
+                this.props.toast.info(res.msgInfo);
+                console.log('1111111111',res);
+            }
+        });
     }
 
     render() {
@@ -21,26 +30,14 @@ export default class demo_page extends PureComponent {
 				测试页面
                 <Button
                     onClick={() => {
-                        toast.info('222222');
+                        toast.info('我是toast显示的内容');
                     }}
                 >
 					toast测试
 
                 </Button>
                 <Button
-                    onClick={() => {
-                        const {tracer} = this.props;
-
-                        tracer.colorConsole('222222');
-                    }}
-                >
-					打印测试
-
-                </Button>
-                <Button
-                    onClick={() => {
-                        toast.info('222222');
-                    }}
+                    onClick={this.fetchTest}
                 >
 					fetch测试
 

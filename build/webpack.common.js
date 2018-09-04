@@ -1,7 +1,7 @@
 const path = require('path');
 const antdTheme = require('../antd-theme.json');
 
-module.exports = function(options) {
+module.exports = function (options) {
     return {
         'mode': options.mode,
         'devtool': options.devTool, // 配置生成Source Maps，选择合适的选项
@@ -14,93 +14,92 @@ module.exports = function(options) {
         },
         'module': {
             // 在配置文件里添加JSON loader
-            'rules': [
-                {
-                    'test': /\.js$/,
-                    'loader': 'babel-loader',
-                    'exclude': /node_modules/
-                },
-                {
-                    'enforce': 'pre',
-                    'test': /\.js$/,
-                    'exclude': /node_modules/,
-                    'loader': 'eslint-loader'
-                },
-                {
-                    'test': /\.js$/,
-                    'exclude': /node_modules/,
-                    'loader': 'babel-loader'
-                },
-                {
-                    'test': /\.json$/,
-                    'loader': 'json-loader'
-                },
-                {
-                    'test': /\.(jsx|js)?$/,
-                    'loader': options.bundleHash ? 'babel-loader' : 'happypack/loader?id=happybabel',
-                    'exclude': /(node_modules)/
-                },
-                {
-                    'test': /\.css$/,
-                    'use': ['style-loader', 'postcss-loader']
-                },
-                {
-                    'test': /\.(scss)$/,
-                    'exclude': /(node_modules)/,
-                    'loader': [
-                        'style-loader', // creates style nodes from JS strings,
-                        'css-loader?modules&localIdentName=[name]-[local][hash]',
-                        'postcss-loader',
-                        'sass-loader' // compiles Sass to CSS
-                    ]
-                },
-                {
-                    'test': /\.less?$/,
-                    'use': [
-                        'style-loader', // creates style nodes from JS strings,
-                        'postcss-loader',
-                        // "less-loader", // compiles Sass to CSS
-                        {
-                            'loader': 'less-loader',
-                            'options': {
-                                'javascriptEnabled': true,
-                                'modifyVars': antdTheme
-                            }
+            'rules': [{
+                'test': /\.js$/,
+                'loader': 'babel-loader',
+                'exclude': /node_modules/
+            },
+            {
+                'enforce': 'pre',
+                'test': /\.js$/,
+                'exclude': /node_modules/,
+                'loader': 'eslint-loader'
+            },
+            {
+                'test': /\.js$/,
+                'exclude': /node_modules/,
+                'loader': 'babel-loader'
+            },
+            {
+                'test': /\.json$/,
+                'loader': 'json-loader'
+            },
+            {
+                'test': /\.(jsx|js)?$/,
+                'loader': options.bundleHash ? 'babel-loader' : 'happypack/loader?id=happybabel',
+                'exclude': /(node_modules)/
+            },
+            {
+                'test': /\.css$/,
+                'use': ['style-loader', 'postcss-loader']
+            },
+            {
+                'test': /\.(scss)$/,
+                'exclude': /(node_modules)/,
+                'loader': [
+                    'style-loader', // creates style nodes from JS strings,
+                    'css-loader?modules&localIdentName=[name]-[local][hash]',
+                    'postcss-loader',
+                    'sass-loader' // compiles Sass to CSS
+                ]
+            },
+            {
+                'test': /\.less?$/,
+                'use': [
+                    'style-loader', // creates style nodes from JS strings,
+                    'postcss-loader',
+                    // "less-loader", // compiles Sass to CSS
+                    {
+                        'loader': 'less-loader',
+                        'options': {
+                            'javascriptEnabled': true,
+                            'modifyVars': antdTheme
                         }
-                    ]
-                },
-                {
-                    'test': /\.html$/,
-                    'loader': 'html-loader'
-                },
-                {
-                    'test': /\.md$/,
-                    'loader': ['html-loader', 'markdown-loader']
-                },
-                {
-                    'test': /\.(png|jpe?g|gif|svg)(\?.*)?$/,
-                    'loader': 'url-loader',
-                    'query': {
-                        'limit': 10000,
-                        'name': 'img/[name]-[hash:8].[ext]'
                     }
-                },
-                {
-                    'test': /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
-                    'loader': 'url-loader',
-                    'options': {
-                        'limit': 10000,
-                        'name': 'media/[name].[hash:7].[ext]'
-                    }
-                },
-                {
-                    'test': /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
-                    'loader': 'url-loader',
-                    'options': {
-                        'limit': 10000,
-                        'name': 'fonts/[name].[hash:7].[ext]'
-                    }
+                ]
+            },
+            {
+                'test': /\.html$/,
+                'loader': 'html-loader'
+            },
+            {
+                'test': /\.md$/,
+                'loader': ['html-loader', 'markdown-loader']
+            },
+            {
+                'test': /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+                'loader': 'url-loader',
+                'query': {
+                    'limit': 10000,
+                    'name': 'img/[name]-[hash:8].[ext]'
                 }
+            },
+            {
+                'test': /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
+                'loader': 'url-loader',
+                'options': {
+                    'limit': 10000,
+                    'name': 'media/[name].[hash:7].[ext]'
+                }
+            },
+            {
+                'test': /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+                'loader': 'url-loader',
+                'options': {
+                    'limit': 10000,
+                    'name': 'fonts/[name].[hash:7].[ext]'
+                }
+            }
             ]
         },
 
@@ -119,9 +118,11 @@ module.exports = function(options) {
             },
             'disableHostCheck': true,
             'proxy': {
-                '/wap': {
-                    'target': 'http://172.16.154.47:8080/wap', //目标接口域名
-                    'pathRewrite': { '^/wap': '' }, //重写接口
+                '/test': {
+                    'target': ' https://www.easy-mock.com/mock/59ccc101a0ab222a113ab3d9/test', //目标接口域名
+                    'pathRewrite': {
+                        '^/test': ''
+                    }, //重写接口
                     'changeOrigin': true //是否跨域
                     // demo=>  'http://localhost:8080/api' ===> 'http://www.abc.com/api'
                 }

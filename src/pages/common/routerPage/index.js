@@ -1,10 +1,11 @@
 import React, { PureComponent } from 'react';
 import { Toast } from 'antd-mobile';
 import fetch from 'sx-fetch';
-// import tracer from 'tracer';
 import Routers from 'pages/router';
 import { Header, Footer } from 'components';
 import { headerConfig, footerConfig } from 'config';
+
+// let logger = require('tracer').colorConsole();
 
 @fetch.inject()
 export default class router_Page extends PureComponent {
@@ -18,6 +19,8 @@ export default class router_Page extends PureComponent {
     componentWillMount() {
         this.loadComponent(this.props);
         console.log(this.props);
+
+        // logger.log('22222222');
     }
 
     componentWillReceiveProps(nextProps) {
@@ -38,13 +41,13 @@ export default class router_Page extends PureComponent {
 	    if (route) {
 	        let component = await route.component();
 
+	        console.log(route,'------------');
 	        this.setState({
-	            'route': { ...route },
+	            'route': route,
 	            'component': React.createElement(component.default, {
 	                match,
 	                history,
 	                $fetch,
-	                // tracer,
 	                'params': location.state,
 	                'setTitle': title => {
 	                    this.setState({
@@ -60,11 +63,12 @@ export default class router_Page extends PureComponent {
 	render() {
 	    const { component, newTitle, route } = this.state;
 
+	    console.log(route,'route');
 	    return (
 	        <div className="application_view">
 	            <div className="application_page">
 	                <Header config={Object.assign({ ...this.props }, { ...headerConfig }, route, { newTitle })} />
-	                 <Footer config={footerConfig} props={route} />
+	                 <Footer config={Object.assign({ ...this.props }, { ...footerConfig }, route)} />
 	                <div className="application_content">{component}</div>
 	            </div>
 	        </div>

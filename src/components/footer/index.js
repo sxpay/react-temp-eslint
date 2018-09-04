@@ -40,7 +40,7 @@ export default class Footer extends PureComponent {
     render() {
         const { config } = this.props;
 
-        return config && config.show&&config.route&&!config.route.footerHide ? (
+        return config && config.show&&!config.footerHide ? (
             <div className={[styles.footer, 'application_footer'].join(' ')}>
                 <TabBarList tabList={config.data} />
             </div>

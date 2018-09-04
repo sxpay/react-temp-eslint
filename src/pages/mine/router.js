@@ -8,6 +8,7 @@ export default [
     {
         'path': '/mine/demo_page',
         'title': '测试',
+        'footerHide':true,
         'component': () => import('pages/mine/demo_page')
     }
 ];

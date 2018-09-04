@@ -17,8 +17,8 @@ export default class Header extends PureComponent {
 	render() {
 	    const { config } = this.props;
 
-
-	    return config && config.show&&config.route&&!config.headerHide ? (
+	    console.log(config,'config');
+	    return config && config.show&&!config.headerHide ? (
 	        <div className={[styles.header, 'application_header'].join(' ')}>
 	            <NavBar
 	                mode={config.mode}

@@ -75,7 +75,7 @@ const fetchinit = () => {
     );
     fetch.init({
         'timeout': 10000, // 默认超时
-        'baseURL': '/wap', // baseurl
+        'baseURL': '/test', // baseurl
         'onShowErrorTip': (err, errorTip) => {
             if (errorTip) {
                 console.log(err);
